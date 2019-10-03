@@ -8,12 +8,13 @@
 <body>
     <header>
         <h1 class="title">Programme des étudiants</h1>
-        <img th:src="@{/images/esi_logo.png}" alt="Logo esi" th:id="logo_esi">
+        <img th:src="@{/images/esi-logo.png}" alt="Logo esi" th:id="logo_esi">
         <h2>HE2B-ESI / WEBG5 / JLC / 2019-2020</h2>
     </header>
     <section>
         <div>Bienvenue sur le site de gestion du programme annuel des étudiants</div>
-        <div>Bienvenue <span th:text="${username}">Inconnu</span>!</div>
+        <span th:text="|Bonjour ${username}!|">Inconnu</span>
+        <a th:href="@{/courses}">Courses</a>
     </section>
 </body>
 </html>
