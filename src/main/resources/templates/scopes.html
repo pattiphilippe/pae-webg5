@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <header th:replace="fragments/main.html::header(title='Scopes test')"></header>
+    <section>
+        <p th:text="|Request: ${requestBean}|"></p>
+        <p th:text="|Session: ${sessionBean}|"></p>
+        <p th:text="|Singleton: ${singletonBean}|"></p>
+        <p th:text="|Default: ${defaultBean}|"></p>
+    </section>
+</body>
+</html>

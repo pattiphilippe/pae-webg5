@@ -1,10 +1,23 @@
 package com.example.demo.model;
 
-import lombok.Value;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
 
-@Value
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 public class Course{
+    @NotBlank
     private String id;
+    @NotBlank
     private String libelle;
+    @Min(1)
     private int ects;
+
 }

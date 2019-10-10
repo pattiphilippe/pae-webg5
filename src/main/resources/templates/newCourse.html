@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <header>
+            <h1 class="title">Programme des étudiants</h1>
+            <img th:src="@{/images/esi-logo.png}" alt="Logo esi" th:id="logo_esi">
+            <h2>HE2B-ESI / WEBG5 / JLC / 2019-2020</h2>
+        </header>
+        <div>
+            <h3>
+                Un nouveau cours a été créé.
+                <ul>
+                    <li th:text="|Sigle : ${course.id}|"></li>
+                    <li th:text="|Libelle : ${course.libelle}|"></li>
+                    <li th:text="|ECTS : ${course.ects}|"></li>
+                </ul>
+            </h3>
+        </div>
+        <a th:href="@{/courses}">Revenir au cours</a>
+</body>
+</html>

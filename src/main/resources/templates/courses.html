@@ -28,5 +28,18 @@
         </table>
         <div th:if="${#lists.isEmpty(courses)}" th:text="|Aucun cours|">Aucun cours</div>
     </section>
+    <section>
+        <h2>Ajouter un cours:</h2>
+        <form th:action="@{/urlCtrl}" th:object="${newCourse}" method="post">
+            Sigle : <input type="text" th:field="*{id}"/><br>
+            <span th:errors="*{id}" class=errorField>Ne peut pas être vide.</span>
+            Libelle : <input type="text" th:field="*{libelle}"/><br>
+            <span th:errors="*{libelle}" class=errorField>Ne peut pas être vide.</span>
+            ECTS : <input type="text" th:field="*{ects}"/><br>
+            <span th:errors="*{ects}" class=errorField>Doit être strictement positif.</span>
+            <button type="submit">Envoyer</button>
+        </form>
+
+    </section>    
 </body>
 </html>
