@@ -8,7 +8,10 @@ import com.example.demo.model.Course;
 
 import org.springframework.stereotype.Service;
 
+import lombok.Getter;
+
 @Service
+@Getter
 public class PAEService{
 
     private List<Course> courses;
@@ -22,10 +25,6 @@ public class PAEService{
         new Course("DEV2", "Développement II", 10),
         new Course("WEBG2", "Développement web I", 2)
         ));
-    }
-
-    public List<Course> getCourses(){
-        return courses;
     }
 
 	public void addCourse(Course newCourse) {

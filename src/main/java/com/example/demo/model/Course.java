@@ -13,7 +13,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Course{
-    @NotBlank
+    @NotBlank(message="Message d'erreur modifié - not blank error")
     private String id;
     @NotBlank
     private String libelle;

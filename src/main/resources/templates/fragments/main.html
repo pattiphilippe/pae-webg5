@@ -2,5 +2,17 @@
     <title th:text="${titre}">Programme des étudiants</title>
     <h1 class="title" th:text="${titre}">Programme des étudiants</h1>
     <img th:src="@{/images/esi-logo.png}" alt="Logo esi" th:id="logo_esi" >
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'recettes/theme.css' %}">
     <h2>HE2B-ESI / WEBG5 / JLC / 2019-2020</h2>
 </header>
+
+<footer class="page-footer" th:fragment="footer">
+    Philippe Patti 43197 -- 
+    <a href="mailto:43197@etu.he2b.be?subject=WAAAAAW, Incroyable&body=Non, je rigole">
+        43197@etu.he2b.be
+    </a>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</footer>
