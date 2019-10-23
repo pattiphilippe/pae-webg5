@@ -1,20 +1,16 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
-    <title>Courses - Programme des étudiants</title>
 </head>
+
 <body>
-    <header>
-        <h1 class="title">Programme des étudiants</h1>
-        <img th:src="@{/images/esi-logo.png}" alt="Logo esi" th:id="logo_esi">
-        <h2>HE2B-ESI / WEBG5 / JLC / 2019-2020</h2>
-    </header>
+    <header th:replace="fragments/main.html::header(titre='Cours')"></header>
     <section>
-        <div>Bienvenue sur le site de gestion du programme annuel des étudiants</div>
         <h2>Liste des cours</h2>
-        <table th:unless="${#lists.isEmpty(courses)}">
+        <table th:unless="${#lists.isEmpty(courses)}" class="table table-bordered table-striped mb-0">
             <tr>
                 <th>Sigle</th>
                 <th>Titre</th>
@@ -31,15 +27,18 @@
     <section>
         <h2>Ajouter un cours:</h2>
         <form th:action="@{/urlCtrl}" th:object="${newCourse}" method="post">
-            Sigle : <input type="text" th:field="*{id}"/><br>
-            <span th:errors="*{id}" class=errorField>Ne peut pas être vide.</span>
-            Libelle : <input type="text" th:field="*{libelle}"/><br>
+            <label for="sigleInput">Sigle : </label>
+            <input type="text" name="sigleInput" th:field="*{id}" th:errorclass="fieldError"/><br>
+            <span th:if="${#fields.hasErrors('id')}" th:errors="*{id}">Ne peut pas être vide.</span>
+            <label for="libelleInput">Libelle : </label>
+            <input type="text" name="libelleInput" th:field="*{libelle}"/><br>
             <span th:errors="*{libelle}" class=errorField>Ne peut pas être vide.</span>
-            ECTS : <input type="text" th:field="*{ects}"/><br>
+            <label for="libelleInput">ECTS : </label>
+            <input type="text" name="ectsInput" th:field="*{ects}"/><br>
             <span th:errors="*{ects}" class=errorField>Doit être strictement positif.</span>
             <button type="submit">Envoyer</button>
         </form>
-
     </section>    
+    <footer th:replace="fragments/main.html::footer"></footer>
 </body>
 </html>

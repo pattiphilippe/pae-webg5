@@ -5,11 +5,10 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
 </head>
 <body>
-    <header th:replace="fragments/main.html::header(titre='Programme des étudiants')"></header>
+    <header th:replace="fragments/main.html::header(titre='Accueil')"></header>
     <section>
         <div>Bienvenue sur le site de gestion du programme annuel des étudiants</div>
         <span th:text="|Bonjour ${username}!|">Inconnu</span>
-        <a th:href="@{/courses}">Courses</a>
     </section>
     <footer th:replace="fragments/main.html::footer"></footer>
 </body>

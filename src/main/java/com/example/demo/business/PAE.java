@@ -17,6 +17,7 @@ public class PAE{
     ));
 
     public static List<Course> getCourses(){
+        System.out.println("JLC ----- > appel a PAE");
         return new ArrayList<>(courses);
     }
 
