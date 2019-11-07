@@ -26,7 +26,7 @@
     </section>
     <section>
         <h2>Ajouter un cours:</h2>
-        <form th:action="@{/urlCtrl}" th:object="${newCourse}" method="post">
+        <form th:action="@{/addNewCourse}" th:object="${newCourse}" method="post">
             <label for="sigleInput">Sigle : </label>
             <input type="text" name="sigleInput" th:field="*{id}" th:errorclass="fieldError"/><br>
             <span th:if="${#fields.hasErrors('id')}" th:errors="*{id}">Ne peut pas être vide.</span>
