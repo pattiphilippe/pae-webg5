@@ -38,6 +38,7 @@ public class CourseController{
     @GetMapping("/courses")
     public String courses(Model model){
         model.addAttribute("newCourse", new Course());
+        //commentaire
         return "courses";
     }
 
