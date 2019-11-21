@@ -15,14 +15,8 @@
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" th:href="@{/}" role="button" aria-haspopup="true"
                 aria-expanded="false">Api</a>
             <div class="dropdown-menu">
-                <a class="dropdown-item" th:href="@{/api/getPae}">Pae</a>
-                <div class="dropdown-divider"></div>
                 <a class="dropdown-item" th:href="@{/api/getCourses}">Courses</a>
                 <a class="dropdown-item" th:href="@{/api/getEtudiants}">Etudiants</a>
-                <div class="dropdown-divider"></div>
-                <div th:each="etudiant : ${etudiants}">
-                    <a class="dropdown-item" th:href="@{/api/getEtudiant/{id}(id = ${etudiant.matricule})}" th:text="${etudiant.name}">Etudiant x</a>
-                </div>
             </div>
         </li>
     </nav>

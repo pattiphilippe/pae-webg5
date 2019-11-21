@@ -14,7 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class EtudiantApiController{
 
-    @Autowired EtudiantDB etudiantDb;
+    @Autowired 
+    private EtudiantDB etudiantDb;
     
     @RequestMapping(path="/api/getEtudiants")
     public List<Etudiant> getEtudiants(){
