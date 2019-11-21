@@ -22,7 +22,7 @@ public class EtudiantApiController{
         return etudiantDb.getAllEtudiants();
     }
 
-    @RequestMapping(path ="/api/getEtudiant/{matricule}")
+    @RequestMapping(path ="/api/getEtudiants/{matricule}")
     public Etudiant getEtudiant(@PathVariable("matricule") int matricule){
         Optional<Etudiant> etudiant = etudiantDb.findById(matricule);
         if(etudiant.isEmpty()){

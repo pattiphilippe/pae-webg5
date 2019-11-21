@@ -14,7 +14,7 @@
                 <th>Nom</th>
             </thead>
             <tr th:each="etudiant : ${etudiants}">
-                <td th:text="${etudiant.matricule}"></td>
+                <td><a th:href="@{/api/getEtudiants/{id}(id = ${etudiant.matricule})}" th:text="${etudiant.matricule}"></a> </td>
                 <td th:text="${etudiant.name}"></td>
             </tr>
         </table>
