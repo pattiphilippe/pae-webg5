@@ -8,6 +8,7 @@ import com.example.demo.business.CourseDB;
 import com.example.demo.business.EtudiantDB;
 import com.example.demo.business.PAEService;
 import com.example.demo.model.Course;
+import com.example.demo.model.Etudiant;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -38,6 +39,7 @@ public class CourseController{
 
     @PostMapping("/addNewCourse")
     public String doSomething(Model model, @Valid Course newCourse, Errors errors){
+        //TODO insert errors
         if(errors.hasErrors()){
             return "redirect:/courses";
         }
@@ -51,5 +53,11 @@ public class CourseController{
         RestTemplate restTemplate = new RestTemplate();
         PAEService pae = restTemplate.getForObject("http://localhost:8080/api/getPae", PAEService.class);
         return pae.getCourses();
+    }
+
+    @GetMapping("/etudiants/json")
+    public List<Etudiant> getEtudiantsJson(){
+        RestTemplate restTemplate = new RestTemplate();
+        return restTemplate.getForObject("http://localhost:8080/api/getPae", List.class);
     }
 }

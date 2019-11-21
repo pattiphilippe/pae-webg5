@@ -27,11 +27,6 @@ public class CourseApiController{
         return pae.getCourses();
     }
 
-    @RequestMapping(path = "/api/getEtudiants")
-    public List<Etudiant> getEtudiants(){
-        return pae.getEtudiants();
-    }
-
     @RequestMapping(path ="/api/getEtudiant/{matricule}")
     public Etudiant getEtudiant(@PathVariable("matricule") int matricule){
         return pae.getEtudiant(matricule);
