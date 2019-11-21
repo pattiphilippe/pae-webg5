@@ -1,14 +1,12 @@
-package com.example.demo;
+package com.example.demo.controller;
 
 import java.util.List;
 
 import javax.validation.Valid;
 
-import com.example.demo.business.CourseDB;
-import com.example.demo.business.EtudiantDB;
-import com.example.demo.business.PAEService;
+import com.example.demo.database.CourseDB;
+import com.example.demo.database.PAEService;
 import com.example.demo.model.Course;
-import com.example.demo.model.Etudiant;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,14 +24,11 @@ public class CourseController{
     @Autowired
     private CourseDB courseDB;
     
-    @Autowired
-    private EtudiantDB etudiantDB;
 
     @GetMapping("/courses")
     public String courses(Model model){
         model.addAttribute("newCourse", new Course());
         model.addAttribute("courses", courseDB.findAll());
-        model.addAttribute("etudiants", etudiantDB.findAll());
         return "courses";
     }
 
@@ -53,11 +48,5 @@ public class CourseController{
         RestTemplate restTemplate = new RestTemplate();
         PAEService pae = restTemplate.getForObject("http://localhost:8080/api/getPae", PAEService.class);
         return pae.getCourses();
-    }
-
-    @GetMapping("/etudiants/json")
-    public List<Etudiant> getEtudiantsJson(){
-        RestTemplate restTemplate = new RestTemplate();
-        return restTemplate.getForObject("http://localhost:8080/api/getPae", List.class);
     }
 }

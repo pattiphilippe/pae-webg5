@@ -8,3 +8,4 @@ INSERT INTO Course (id, libelle, ects) VALUES ('WEBG2', 'Développement web I', 
 INSERT INTO Etudiant VALUES (43197, 'Philippe');
 INSERT INTO Etudiant VALUES (49737, 'Antony');
 INSERT INTO Etudiant VALUES (47993, 'Logan');
+INSERT INTO Etudiant VALUES (40001, 'Henry');

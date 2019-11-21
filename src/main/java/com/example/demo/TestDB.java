@@ -1,7 +1,7 @@
 package com.example.demo;
 
-import com.example.demo.business.CourseDB;
-import com.example.demo.business.EtudiantDB;
+import com.example.demo.database.CourseDB;
+import com.example.demo.database.EtudiantDB;
 import com.example.demo.model.Course;
 import com.example.demo.model.Etudiant;
 
