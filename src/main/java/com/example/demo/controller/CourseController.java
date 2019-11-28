@@ -11,10 +11,8 @@ import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
-@SessionAttributes("courses")
 public class CourseController{
 
     @Autowired
@@ -23,8 +21,8 @@ public class CourseController{
 
     @GetMapping("/courses")
     public String courses(Model model){
-        model.addAttribute("newCourse", new Course());
         model.addAttribute("courses", courseDB.findAll());
+        model.addAttribute("newCourse", new Course());
         return "courses";
     }
 
