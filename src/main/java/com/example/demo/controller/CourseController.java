@@ -25,6 +25,9 @@ public class CourseController{
     public String courses(Model model){
         model.addAttribute("newCourse", new Course());
         model.addAttribute("courses", courseDB.findAll());
+        for(Course c : courseDB.findAll()){
+            System.out.println(c);
+        }
         return "courses";
     }
 

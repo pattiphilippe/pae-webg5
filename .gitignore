@@ -29,3 +29,7 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### WEBG5 ###
+db.mv.db
+db.trace.db

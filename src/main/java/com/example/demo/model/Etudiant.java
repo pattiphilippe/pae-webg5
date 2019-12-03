@@ -12,9 +12,9 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @Entity
-@Getter
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
 @ToString
 public class Etudiant {
     @Id
