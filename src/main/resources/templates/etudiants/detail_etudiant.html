@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+</head>
+<body>
+    <header th:replace="main :: header(titre='Etudiant - ' + ${detail.matricule})"></header>
+    
+    <section id="detail_etudiant" th:fragment="detail_etudiant">
+        <h2 th:text="${detail.matricule}"></h2>
+        <ul>
+            <li th:text="|Nom : ${detail.name}|"></li>
+        </ul>
+        <h2>Inscrit</h2>
+        <table th:unless="${#lists.isEmpty(detail.courses)}" class="table table-bordered table-striped mb-0">
+            <thead>
+                <th>Sigle</th>
+                <th>Titre</th>
+                <th>ECTS</th>
+            </thead>
+            <tr th:each="course : ${detail.courses}">
+                <td><a th:href="@{/courses/{id}(id = ${course.id})}" th:text="${course.id}"></a></td>
+                <td th:text="${course.libelle}"></td>
+                <td th:text="${course.ects}"></td>
+            </tr>
+        </table>
+        <div th:if="${#lists.isEmpty(detail.courses)}" th:text="|Inscrit à aucun cours|">Inscrit à aucun cours</div>
+    </section>
+    <section>
+        <a class="btn btn-success" th:href="@{/api/getEtudiants/{id}(id = ${detail.matricule})}" th:text="JSON"></a>
+    </section>
+    <div th:replace="main :: footer_margin"></div>
+    <footer th:replace="main :: footer"></footer>
+</body>
+</html>

@@ -2,10 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
 </head>
 <body>
-    <header th:replace="fragments/main.html::header(titre='Etudiants')"></header>
+    <header th:replace="main :: header(titre='Etudiants')"></header>
     <section>
         <h2>Liste des étudiants</h2>
         <table th:unless="${#lists.isEmpty(etudiants)}" class="table table-bordered table-striped mb-0">
@@ -14,13 +13,14 @@
                 <th>Nom</th>
             </thead>
             <tr th:each="etudiant : ${etudiants}">
-                <td><a th:href="@{/api/getEtudiants/{id}(id = ${etudiant.matricule})}" th:text="${etudiant.matricule}"></a> </td>
+                <td><a th:href="@{etudiants/{id}(id = ${etudiant.matricule})}" th:text="${etudiant.matricule}"></a> </td>
                 <td th:text="${etudiant.name}"></td>
             </tr>
         </table>
         <div th:if="${#lists.isEmpty(etudiants)}" th:text="|Aucun étudiant|">Aucun étudiants</div>
     </section> 
-    <footer th:replace="fragments/main.html::footer"></footer>
+    <div th:replace="main :: footer_margin"></div>
+    <footer th:replace="main :: footer"></footer>
     
 </body>
 </html>

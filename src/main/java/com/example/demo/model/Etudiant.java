@@ -1,10 +1,16 @@
 package com.example.demo.model;
 
+import java.util.Collection;
+
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -24,4 +30,7 @@ public class Etudiant {
     @NotBlank
     private String name;
 
+    @ManyToMany(mappedBy="etudiants", fetch = FetchType.LAZY)
+    @JsonBackReference
+    private Collection<Course> courses;
 }

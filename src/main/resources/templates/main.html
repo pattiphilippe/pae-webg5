@@ -4,7 +4,7 @@
     <link rel="stylesheet" type="text/css" th:href="@{/pae/css/theme.css}">
 
     <title th:text="${titre}">Programme des étudiants</title>
-    <img th:src="@{pae/images/esi-logo.png}" alt="Logo esi" th:id="logo_esi">
+    <img th:src="@{/pae/images/esi-logo.png}" alt="Logo esi" th:id="logo_esi">
     <h1>Programme des étudiants</h1>
     <h2 class="title" th:text="${titre}">HE2B-ESI / WEBG5 / JLC / 2019-2020</h2>
     <nav class="nav justify-content-center">
@@ -22,7 +22,9 @@
     </nav>
 </header>
 
-<footer class="page-footer" th:fragment="footer">
+<div id="footer_margin" th:fragment="footer_margin"></div>
+
+<footer th:fragment="footer">
     Philippe Patti 43197 --
     <a href="mailto:43197@etu.he2b.be?subject=WAAAAAW, Incroyable&body=Non, je rigole">
         43197@etu.he2b.be

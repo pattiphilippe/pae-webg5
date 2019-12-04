@@ -2,14 +2,13 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
 </head>
 <body>
-    <header th:replace="fragments/main.html::header(titre='Accueil')"></header>
+    <header th:replace="main :: header(titre='Accueil')"></header>
     <section>
         <div>Bienvenue sur le site de gestion du programme annuel des étudiants</div>
         <span th:text="|Bonjour ${username}!|">Inconnu</span>
     </section>
-    <footer th:replace="fragments/main.html::footer"></footer>
+    <footer th:replace="main :: footer"></footer>
 </body>
 </html>
