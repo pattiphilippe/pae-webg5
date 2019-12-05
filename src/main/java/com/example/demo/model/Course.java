@@ -7,6 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 
@@ -31,6 +32,7 @@ public class Course{
     @NotBlank
     private String libelle;
     @Min(1)
+    @Max(30)
     private int ects;
 
     @ManyToMany

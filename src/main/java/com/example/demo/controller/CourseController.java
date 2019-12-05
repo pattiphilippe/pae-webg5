@@ -28,7 +28,6 @@ public class CourseController{
     public String courses(Model model){
         model.addAttribute("newCourse", new Course());
         model.addAttribute("courses", courseDB.findAll());
-        Course c = new Course();
         return "courses/courses";
     }
 
