@@ -1,4 +1,4 @@
-package com.example.demo.database;
+package com.example.demo.repository;
 
 import static org.junit.Assert.assertEquals;
 
@@ -16,16 +16,16 @@ import static com.example.demo.model.EtudiantTest.*;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
-public class EtudiantDBIntegrationTest {
+public class EtudiantRepositoryIntegrationTest {
 
     @Autowired
-    private EtudiantDB etudiantDB;
+    private EtudiantRepository etudiantRepository;
 
     @Test
     public void findByName(){
         Etudiant etudiant = new Etudiant(DFT_MATRICULE, DFT_NAME, DFT_COURSES);
-        etudiantDB.save(etudiant);
-        Etudiant found = etudiantDB.findByName(etudiant.getName());
+        etudiantRepository.save(etudiant);
+        Etudiant found = etudiantRepository.findByName(etudiant.getName());
         assertEquals(etudiant, found);
     }
 
@@ -33,9 +33,9 @@ public class EtudiantDBIntegrationTest {
     public void findAllAsList(){
         Etudiant etudiant1 = new Etudiant(DFT_MATRICULE, DFT_NAME, DFT_COURSES);
         Etudiant etudiant2 = new Etudiant(43198, "OTHER_NAME", DFT_COURSES);
-        etudiantDB.save(etudiant1);
-        etudiantDB.save(etudiant2);
-        List<Etudiant> found = etudiantDB.findAllAsList();
+        etudiantRepository.save(etudiant1);
+        etudiantRepository.save(etudiant2);
+        List<Etudiant> found = etudiantRepository.findAllAsList();
         assertEquals(2, found.size());
         assertEquals(etudiant1, found.get(0));
         assertEquals(etudiant2, found.get(1));

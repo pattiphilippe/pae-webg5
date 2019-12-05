@@ -4,7 +4,7 @@ import java.util.Optional;
 
 import javax.validation.Valid;
 
-import com.example.demo.database.CourseDB;
+import com.example.demo.repository.CourseRepository;
 import com.example.demo.model.Course;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,18 +16,20 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import static com.example.demo.model.Course.*;
+
 @Controller
 @SessionAttributes("courses")
 public class CourseController{
 
     @Autowired
-    private CourseDB courseDB;
+    private CourseRepository courseRepository;
     
 
     @GetMapping("/courses")
     public String courses(Model model){
         model.addAttribute("newCourse", new Course());
-        model.addAttribute("courses", courseDB.findAll());
+        model.addAttribute("courses", courseRepository.findAll());
         return "courses/courses";
     }
 
@@ -37,14 +39,14 @@ public class CourseController{
         if(errors.hasErrors()){
             return "redirect:/courses";
         }
-        courseDB.save(newCourse);
-        model.addAttribute("courses", courseDB.findAll());
+        courseRepository.save(newCourse);
+        model.addAttribute("courses", courseRepository.findAll());
         return "redirect:/courses";
     }
 
-    @GetMapping("/courses/{id}")
-    public String detailCours(@PathVariable("id") String id, Model model){
-        Optional<Course> course = courseDB.findById(id);
+    @GetMapping("/courses/{id:" + REGEX_ID + "}")
+    public String detailCoursById(@PathVariable("id") String id, Model model){
+        Optional<Course> course = courseRepository.findById(id);
         if(course.isEmpty()){
             throw new IllegalArgumentException("Pas de cours avec cet id!");
         }
@@ -52,4 +54,13 @@ public class CourseController{
         return "courses/detail_course";
     }
 
+    @GetMapping("/courses/{libelle:" + REGEX_LIBELLE + "}")
+    public String detailCoursByLibelle(@PathVariable("libelle") String libelle, Model model){
+        Optional<Course> course = courseRepository.findByLibelle(libelle);
+        if(course.isEmpty()){
+            throw new IllegalArgumentException("Pas de cours avec ce libelle!");
+        }
+        model.addAttribute("detail", course.get());
+        return "courses/detail_course";
+    }
 }

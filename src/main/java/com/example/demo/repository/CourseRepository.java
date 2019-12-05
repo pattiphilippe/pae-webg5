@@ -1,13 +1,14 @@
-package com.example.demo.database;
+package com.example.demo.repository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import com.example.demo.model.Course;
 
 import org.springframework.data.repository.CrudRepository;
 
-public interface CourseDB extends CrudRepository<Course, String> {
+public interface CourseRepository extends CrudRepository<Course, String> {
 
     default List<Course> findAllAsList(){
         List<Course> courses = new ArrayList<>();
@@ -15,5 +16,5 @@ public interface CourseDB extends CrudRepository<Course, String> {
         return courses;
     }
 
-    public Course findByLibelle(String libelle);
+    public Optional<Course> findByLibelle(String libelle);
 }

@@ -2,7 +2,7 @@ package com.example.demo.controller;
 
 import java.util.Optional;
 
-import com.example.demo.database.EtudiantDB;
+import com.example.demo.repository.EtudiantRepository;
 import com.example.demo.model.Etudiant;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,17 +16,17 @@ import org.springframework.web.bind.annotation.PathVariable;
 public class EtudiantController{
 
     @Autowired
-    private EtudiantDB etudiantDB;
+    private EtudiantRepository etudiantRepository;
 
     @GetMapping("/etudiants")
     public String etudiants(Model model) {
-        model.addAttribute("etudiants", etudiantDB.findAll());
+        model.addAttribute("etudiants", etudiantRepository.findAll());
         return "etudiants/etudiants";
     }
     
     @GetMapping("/etudiants/{id}")
     public String detailEtudiant(@PathVariable("id") int id, Model model){
-        Optional<Etudiant> etudiant = etudiantDB.findById(id);
+        Optional<Etudiant> etudiant = etudiantRepository.findById(id);
         if(etudiant.isEmpty()){
             throw new IllegalArgumentException("Pas d'étudiant avec ce matricule!");
         }

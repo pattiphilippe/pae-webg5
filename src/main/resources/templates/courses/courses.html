@@ -16,8 +16,8 @@
                 <th>ECTS</th>
             </thead>
             <tr th:each="course : ${courses}">
-                <td><a class="stetched-link" th:href="@{/courses/{id}(id = ${course.id})}" th:text="${course.id}"></a></td>
-                <td th:text="${course.libelle}"></td>
+                <td><a th:href="@{/courses/{id}(id = ${course.id})}" th:text="${course.id}"></a></td>
+                <td><a th:href="@{/courses/{libelle}(libelle = ${course.libelle})}"  th:text="${course.libelle}"></a></td>
                 <td th:text="${course.ects}"></td>
             </tr>
         </table>

@@ -1,4 +1,4 @@
-package com.example.demo.database;
+package com.example.demo.repository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,7 +7,7 @@ import com.example.demo.model.Etudiant;
 
 import org.springframework.data.repository.CrudRepository;
 
-public interface EtudiantDB extends CrudRepository<Etudiant, Integer> {
+public interface EtudiantRepository extends CrudRepository<Etudiant, Integer> {
 
     default List<Etudiant> findAllAsList(){
         List<Etudiant> etudiants = new ArrayList<>();

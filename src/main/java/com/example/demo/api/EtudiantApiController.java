@@ -3,7 +3,7 @@ package com.example.demo.api;
 import java.util.List;
 import java.util.Optional;
 
-import com.example.demo.database.EtudiantDB;
+import com.example.demo.repository.EtudiantRepository;
 import com.example.demo.model.Etudiant;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,16 +15,16 @@ import org.springframework.web.bind.annotation.RestController;
 public class EtudiantApiController{
 
     @Autowired 
-    private EtudiantDB etudiantDb;
+    private EtudiantRepository etudiantRepository;
     
     @RequestMapping(path="/api/getEtudiants")
     public List<Etudiant> getEtudiants(){
-        return etudiantDb.findAllAsList();
+        return etudiantRepository.findAllAsList();
     }
 
     @RequestMapping(path ="/api/getEtudiants/{matricule}")
     public Etudiant getEtudiant(@PathVariable("matricule") int matricule){
-        Optional<Etudiant> etudiant = etudiantDb.findById(matricule);
+        Optional<Etudiant> etudiant = etudiantRepository.findById(matricule);
         if(etudiant.isEmpty()){
             throw new IllegalArgumentException("Pas d'etudiant avec ce matricule!");
         }
