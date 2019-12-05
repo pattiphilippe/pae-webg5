@@ -26,13 +26,11 @@ import lombok.NoArgsConstructor;
 public class Course{
 
   public static final String REGEX_ID = "[A-Z]{3,4}\\d";
-  public static final String REGEX_LIBELLE = "[^\\d]+";
+  public static final String REGEX_LIBELLE = "[^\\d\\s][^\\d]+";
 
     @Id
-    @NotBlank(message="Message d'erreur modifié - not blank error")
     @Pattern(regexp = REGEX_ID)
     private String id;
-    @NotBlank
     @Column(unique = true)
     @Pattern(regexp = REGEX_LIBELLE)
     private String libelle;

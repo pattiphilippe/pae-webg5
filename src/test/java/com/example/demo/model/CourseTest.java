@@ -5,6 +5,7 @@ import java.util.List;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,8 +20,8 @@ public class CourseTest {
     @Autowired
     private BeanValidationUtil<Course> validator;
 
-    public static final String DFT_ID = "ID"; 
-    public static final String DFT_LIBELLE = "LIBELLE"; 
+    public static final String DFT_ID = "MOBG5"; 
+    public static final String DFT_LIBELLE = "Développement Mobile"; 
     public static final int DFT_ECTS = 5; 
     public static final List<Etudiant> DFT_ETUDIANTS = null; 
 
@@ -34,10 +35,12 @@ public class CourseTest {
     @Test
     public void idBlankError(){
         Course course = new Course("", DFT_LIBELLE, DFT_ECTS, DFT_ETUDIANTS);
-        validator.assertHasError(course, "id", NotBlank.class);
+        validator.assertHasError(course, "id", Pattern.class);
         course = new Course(" ", DFT_LIBELLE, DFT_ECTS, DFT_ETUDIANTS);
-        validator.assertHasError(course, "id", NotBlank.class);
+        validator.assertHasError(course, "id", Pattern.class);
     }
+
+    //TODO test regex
 
     @Test
     public void libelleValid(){
@@ -48,9 +51,9 @@ public class CourseTest {
     @Test
     public void libelleBlankError(){
         Course course = new Course(DFT_ID, "", DFT_ECTS, DFT_ETUDIANTS);
-        validator.assertHasError(course, "libelle", NotBlank.class);
+        validator.assertHasError(course, "libelle", Pattern.class);
         course = new Course(DFT_ID, " ", DFT_ECTS, DFT_ETUDIANTS);
-        validator.assertHasError(course, "libelle", NotBlank.class);
+        validator.assertHasError(course, "libelle", Pattern.class);
     }
 
     //TODO test libelle unique

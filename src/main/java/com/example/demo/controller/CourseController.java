@@ -28,6 +28,8 @@ public class CourseController{
 
     @GetMapping("/courses")
     public String courses(Model model){
+		Course c = new Course("", "De", 5, null);
+		System.out.println(c);
         model.addAttribute("newCourse", new Course());
         model.addAttribute("courses", courseRepository.findAll());
         return "courses/courses";
@@ -37,7 +39,7 @@ public class CourseController{
     public String doSomething(Model model, @Valid Course newCourse, Errors errors){
         //TODO insert errors
         if(errors.hasErrors()){
-            return "redirect:/courses";
+            return "redirect:/";
         }
         courseRepository.save(newCourse);
         model.addAttribute("courses", courseRepository.findAll());
