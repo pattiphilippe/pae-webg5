@@ -9,9 +9,11 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface CourseDB extends CrudRepository<Course, String> {
 
-    default List<Course> getAllCourses(){
+    default List<Course> findAllAsList(){
         List<Course> courses = new ArrayList<>();
         findAll().forEach(courses::add);
         return courses;
     }
+
+    public Course findByLibelle(String libelle);
 }

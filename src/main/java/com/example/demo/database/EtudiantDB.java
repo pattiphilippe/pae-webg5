@@ -9,10 +9,12 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface EtudiantDB extends CrudRepository<Etudiant, Integer> {
 
-    default List<Etudiant> getAllEtudiants(){
+    default List<Etudiant> findAllAsList(){
         List<Etudiant> etudiants = new ArrayList<>();
         findAll().forEach(etudiants::add);
         return etudiants;
     }
+
+    public Etudiant findByName(String name);
     
 }

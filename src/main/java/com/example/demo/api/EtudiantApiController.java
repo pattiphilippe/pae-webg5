@@ -19,7 +19,7 @@ public class EtudiantApiController{
     
     @RequestMapping(path="/api/getEtudiants")
     public List<Etudiant> getEtudiants(){
-        return etudiantDb.getAllEtudiants();
+        return etudiantDb.findAllAsList();
     }
 
     @RequestMapping(path ="/api/getEtudiants/{matricule}")

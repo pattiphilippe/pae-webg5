@@ -19,7 +19,7 @@ public class CourseApiController{
 
     @RequestMapping(path = "/api/getCourses")
     public List<Course> getCourses(){
-        return courseDB.getAllCourses();
+        return courseDB.findAllAsList();
     }
 
     @RequestMapping(path ="/api/getCourses/{id}")

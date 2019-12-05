@@ -19,10 +19,10 @@ public class CourseTest {
     @Autowired
     private BeanValidationUtil<Course> validator;
 
-    private final String DFT_ID = "ID"; 
-    private final String DFT_LIBELLE = "LIBELLE"; 
-    private final int DFT_ECTS = 5; 
-    private final List<Etudiant> DFT_ETUDIANTS = null; 
+    public static final String DFT_ID = "ID"; 
+    public static final String DFT_LIBELLE = "LIBELLE"; 
+    public static final int DFT_ECTS = 5; 
+    public static final List<Etudiant> DFT_ETUDIANTS = null; 
 
 
     @Test
@@ -52,6 +52,8 @@ public class CourseTest {
         course = new Course(DFT_ID, " ", DFT_ECTS, DFT_ETUDIANTS);
         validator.assertHasError(course, "libelle", NotBlank.class);
     }
+
+    //TODO test libelle unique
 
     @Test
     public void ectsValid(){

@@ -20,9 +20,9 @@ public class EtudiantTest {
     @Autowired
     private BeanValidationUtil<Etudiant> validator;
 
-    private final int DFT_MATRICULE = 43197; 
-    private final String DFT_NAME = "NAME";
-    private final List<Course> DFT_COURSES = null; 
+    public static final int DFT_MATRICULE = 43197; 
+    public static final String DFT_NAME = "NAME";
+    public static final List<Course> DFT_COURSES = null; 
 
 
     @Test

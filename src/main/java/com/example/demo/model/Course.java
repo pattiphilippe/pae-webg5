@@ -2,6 +2,7 @@ package com.example.demo.model;
 
 import java.util.Collection;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
@@ -14,22 +15,19 @@ import javax.validation.constraints.NotBlank;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
 
 @Entity
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Setter
-@ToString
 public class Course{
     @Id
     @NotBlank(message="Message d'erreur modifié - not blank error")
     private String id;
     @NotBlank
+    @Column(unique = true)
     private String libelle;
     @Min(1)
     @Max(30)
