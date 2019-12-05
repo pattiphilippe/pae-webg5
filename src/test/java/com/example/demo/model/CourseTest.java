@@ -83,4 +83,6 @@ public class CourseTest {
         }
     }
 
+    //TODO test many to many relation
+
 }

@@ -13,15 +13,15 @@ import javax.validation.constraints.NotBlank;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @Entity
-@NoArgsConstructor
+@Data
 @AllArgsConstructor
-@Getter
-@ToString
+@NoArgsConstructor
 public class Etudiant {
     @Id
     @Min(40000)
