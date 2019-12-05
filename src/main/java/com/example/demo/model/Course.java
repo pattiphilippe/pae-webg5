@@ -10,7 +10,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -26,7 +25,7 @@ import lombok.NoArgsConstructor;
 public class Course{
 
   public static final String REGEX_ID = "[A-Z]{3,4}\\d";
-  public static final String REGEX_LIBELLE = "[^\\d\\s][^\\d]+";
+  public static final String REGEX_LIBELLE = "[^\\d\\s](?:%..|[^\\d])+";
 
     @Id
     @Pattern(regexp = REGEX_ID)

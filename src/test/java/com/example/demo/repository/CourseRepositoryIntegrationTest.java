@@ -2,7 +2,6 @@ package com.example.demo.repository;
 
 import static org.junit.Assert.assertEquals;
 
-import java.util.List;
 import java.util.Optional;
 
 import com.example.demo.model.Course;

@@ -1,8 +1,9 @@
 package com.example.demo.repository;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
-import java.util.List;
+import java.util.Optional;
 
 import com.example.demo.model.Etudiant;
 
@@ -25,19 +26,22 @@ public class EtudiantRepositoryIntegrationTest {
     public void findByName(){
         Etudiant etudiant = new Etudiant(DFT_MATRICULE, DFT_NAME, DFT_COURSES);
         etudiantRepository.save(etudiant);
-        Etudiant found = etudiantRepository.findByName(etudiant.getName());
-        assertEquals(etudiant, found);
+        Optional<Etudiant> found = etudiantRepository.findByName(etudiant.getName());
+        assertTrue(found.isPresent());
+        assertEquals(etudiant, found.get());
     }
 
-    @Test
-    public void findAllAsList(){
-        Etudiant etudiant1 = new Etudiant(DFT_MATRICULE, DFT_NAME, DFT_COURSES);
-        Etudiant etudiant2 = new Etudiant(43198, "OTHER_NAME", DFT_COURSES);
-        etudiantRepository.save(etudiant1);
-        etudiantRepository.save(etudiant2);
-        List<Etudiant> found = etudiantRepository.findAllAsList();
-        assertEquals(2, found.size());
-        assertEquals(etudiant1, found.get(0));
-        assertEquals(etudiant2, found.get(1));
-    }
+
+    //TODO test find all in Service
+    // @Test
+    // public void findAllAsList(){
+    //     Etudiant etudiant1 = new Etudiant(DFT_MATRICULE, DFT_NAME, DFT_COURSES);
+    //     Etudiant etudiant2 = new Etudiant(43198, "OTHER_NAME", DFT_COURSES);
+    //     etudiantRepository.save(etudiant1);
+    //     etudiantRepository.save(etudiant2);
+    //     List<Etudiant> found = etudiantRepository.findAllAsList();
+    //     assertEquals(2, found.size());
+    //     assertEquals(etudiant1, found.get(0));
+    //     assertEquals(etudiant2, found.get(1));
+    // }
 }
