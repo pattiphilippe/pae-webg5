@@ -28,6 +28,8 @@
         </table>
 
         <div th:if="${#lists.isEmpty(courses)}" th:text="|Aucun cours|">Aucun cours</div>
+        <br>
+        <a class="btn btn-success" th:href="@{/api/getCourses}" th:text="JSON"></a>
     </section>
 
     <section>

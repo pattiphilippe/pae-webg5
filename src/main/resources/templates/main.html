@@ -29,6 +29,12 @@
                 <a class="dropdown-item" th:href="@{__${#httpServletRequest.requestURI}__(lang=fr)}" th:text="#{french}"></a>
             </div>
         </li>
+        <form class="form-inline" method="GET" th:action="@{/login}" sec:authorize="isAnonymous()">
+            <button class="btn btn-success" type="submit">Log In</button>
+        </form>
+        <form class="form-inline" method="POST" th:action="@{/logout}" sec:authorize="isAuthenticated()">
+            <button class="btn btn-danger" type="submit">Log Out</button>
+        </form>
     </nav>
 </header>
 

@@ -22,7 +22,6 @@ header {
     float: left;
     margin: 0px 20px;
     height: 80px;
-    padding: 5px;
 }
 
 header h1, header h2 {
@@ -82,7 +81,7 @@ input[type=text] {
     border-radius: 4px;
 }
 
-form {
+section form {
     width: 35%;
     height: 35%;
 }

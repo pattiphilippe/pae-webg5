@@ -18,7 +18,10 @@
             </tr>
         </table>
         <div th:if="${#lists.isEmpty(etudiants)}" th:text="|Aucun étudiant|">Aucun étudiants</div>
+        <br>
+        <a class="btn btn-success" th:href="@{/api/getEtudiants}" th:text="JSON"></a>
     </section> 
+
     <div th:replace="main :: footer_margin"></div>
     <footer th:replace="main :: footer"></footer>
     

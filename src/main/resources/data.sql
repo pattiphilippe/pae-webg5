@@ -1,6 +1,8 @@
 DELETE FROM Course;
 DELETE FROM Etudiant;
 DELETE FROM Inscriptions;
+DELETE FROM User;
+DELETE FROM Authority;
 
 INSERT INTO Course (id, libelle, ects) VALUES ('INT1', 'Introductions', 10);
 INSERT INTO Course (id, libelle, ects) VALUES ('MAT1', 'Mathématiques II', 3);
@@ -35,3 +37,8 @@ INSERT INTO Inscriptions (course_id, student_id) VALUES ('WEBG2', 43197);
 INSERT INTO Inscriptions (course_id, student_id) VALUES ('WEBG2', 49737);
 INSERT INTO Inscriptions (course_id, student_id) VALUES ('WEBG2', 47993);
 INSERT INTO Inscriptions (course_id, student_id) VALUES ('WEBG2', 40001);
+
+
+INSERT INTO User (username, password, enabled) values ('40001','{bcrypt}$2a$10$LSDtj6X7InrX4YjJ//ChluKU.yqCRNCplBTrQaBWmILWBarQYdhWG', true);
+INSERT INTO Authority (id, username, authority) values (2, '40001', 'ROLE_STUDENT');
+ALTER SEQUENCE security_seq restart 30;
