@@ -8,12 +8,15 @@ import com.example.demo.repository.CourseRepository;
 import com.example.demo.model.Course;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import static com.example.demo.model.Course.*;
@@ -35,15 +38,21 @@ public class CourseController{
         return "courses/courses";
     }
 
-    @PostMapping("/addNewCourse")
-    public String doSomething(Model model, @Valid Course newCourse, Errors errors){
+    @PostMapping("/courses/add")
+    @ResponseStatus(value = HttpStatus.OK)
+    public String addCourse(@Valid @ModelAttribute("course") Course newCourse,
+            Errors errors, Model model){
         //TODO insert errors
+        System.out.println("Ajout d'un cours : " + newCourse);
         if(errors.hasErrors()){
-            return "redirect:/";
+            System.out.println("Problème de validation "+ errors.getErrorCount() + "erreur(s)");
+            model.addAttribute("newCourse", newCourse);
+        } else {
+            courseRepository.save(newCourse);
+            System.out.println("Ajout réussi !");
         }
-        courseRepository.save(newCourse);
         model.addAttribute("courses", courseRepository.findAll());
-        return "redirect:/courses";
+        return "courses/courses";
     }
 
     @GetMapping("/courses/{id:" + REGEX_ID + "}")

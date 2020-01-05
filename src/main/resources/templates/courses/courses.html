@@ -7,40 +7,53 @@
 
 <body>
     <header th:replace="main :: header(titre='Cours')"></header>
+
     <section>
         <h2>Liste des cours</h2>
+
         <table th:unless="${#lists.isEmpty(courses)}" class="table table-bordered table-striped mb-0">
+
             <thead>
                 <th>Sigle</th>
                 <th>Titre</th>
                 <th>ECTS</th>
             </thead>
+
             <tr th:each="course : ${courses}">
                 <td><a th:href="@{/courses/{id}(id = ${course.id})}" th:text="${course.id}"></a></td>
                 <td><a th:href="@{/courses/{libelle}(libelle = ${course.libelle})}"  th:text="${course.libelle}"></a></td>
                 <td th:text="${course.ects}"></td>
             </tr>
+
         </table>
+
         <div th:if="${#lists.isEmpty(courses)}" th:text="|Aucun cours|">Aucun cours</div>
     </section>
-    <span th:unless="${detail==null}">
-        <section th:replace="courses/detail_course :: detail_course"></section>
-    </span>
+
     <section>
         <h2>Ajouter un cours:</h2>
-        <form th:action="@{/addNewCourse}" th:object="${newCourse}" method="post">
-            <label for="sigleInput">Sigle : </label>
-            <input type="text" name="sigleInput" th:field="*{id}" th:errorclass="fieldError" value="MOBG5"/><br>
-            <span th:if="${#fields.hasErrors('id')}" th:errors="*{id}">Ne peut pas être vide.</span>
-            <label for="libelleInput">Libelle : </label>
-            <input type="text" name="libelleInput" th:field="*{libelle}" value="Développement Mobile"/><br>
-            <span th:errors="*{libelle}" class=errorField>Ne peut pas être vide.</span>
-            <label for="libelleInput">ECTS : </label>
-            <input type="text" name="ectsInput" th:field="*{ects}" value="5"/><br>
-            <span th:errors="*{ects}" class=errorField>Doit être strictement positif.</span>
+        <form th:action="@{/courses/add}" th:object="${newCourse}" method="post">
+
+            <label for="course_id">Sigle : </label>
+            <input type="text" name="course_id" th:field="*{id}" th:errorclass="fieldError" placeholder="Entrez le sigle du cours"/>
+            <span th:errors="*{id}" class="errorField">Sigle invalide</span><br>
+
+            <label for="course_libelle">Libelle : </label>
+            <input type="text" name="course_libelle" th:field="*{libelle}"/>
+            <span th:errors="*{libelle}" class=errorField>Libelle invalide</span><br>
+
+            <label for="course_ects">ECTS : </label>
+            <input type="text" name="course_ects" th:field="*{ects}" />
+            <span th:errors="*{ects}" class=errorField>ECTS invalides</span><br>
+
+            <ul th:if="${#fields.hasErrors('*')}">
+                <li th:each="err : ${#fields.errors('*')}" th:text="${err}">Input is incorrect</li>
+            </ul><br>
+
             <button class="btn btn-success" type="submit">Envoyer</button>
         </form>
-    </section>    
+    </section>  
+
     <div th:replace="main :: footer_margin"></div>
     <footer th:replace="main :: footer"></footer>
     
