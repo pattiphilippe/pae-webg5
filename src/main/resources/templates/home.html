@@ -7,7 +7,8 @@
     <header th:replace="main :: header(title=#{home})"></header>
     <section>
         <div>Bienvenue sur le site de gestion du programme annuel des étudiants</div>
-        <span th:text="|#{greetings} ${username}|">
+        <div th:text="|#{greetings} ${username}|"></div>
+        <div th:text="${#temporals.format(#temporals.createNow(), 'SHORT')}"></div>
     </section>
     <footer th:replace="main :: footer"></footer>
 </body>
