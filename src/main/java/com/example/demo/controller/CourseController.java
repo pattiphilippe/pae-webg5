@@ -27,7 +27,7 @@ public class CourseController{
 
     @Autowired
     private CourseRepository courseRepository;
-    
+
 
     @GetMapping("/courses")
     public String courses(Model model){

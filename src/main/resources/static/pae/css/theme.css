@@ -18,10 +18,11 @@ header {
     margin-bottom: 1rem;
 }
 
-header img {
+#logo_esi {
     float: left;
     margin: 0px 20px;
     height: 80px;
+    padding: 5px;
 }
 
 header h1, header h2 {
@@ -31,6 +32,11 @@ header h1, header h2 {
 
 header nav {
     background-color: white;
+}
+
+nav img{
+    width: 20px;
+    height: 20px;
 }
 
 ul li a {

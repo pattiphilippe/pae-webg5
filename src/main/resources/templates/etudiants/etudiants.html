@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 </head>
 <body>
-    <header th:replace="main :: header(titre='Etudiants')"></header>
+    <header th:replace="main :: header(title=#{students})"></header>
     <section>
         <h2>Liste des étudiants</h2>
         <table th:unless="${#lists.isEmpty(etudiants)}" class="table table-bordered table-striped mb-0">

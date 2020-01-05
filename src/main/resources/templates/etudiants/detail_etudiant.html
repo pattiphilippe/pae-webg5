@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 </head>
 <body>
-    <header th:replace="main :: header(titre='Etudiant - ' + ${detail.matricule})"></header>
+    <header th:replace="main :: header(title=#{student} + ' - ' + ${detail.matricule})"></header>
     
     <section id="detail_etudiant" th:fragment="detail_etudiant">
         <h2 th:text="${detail.matricule}"></h2>

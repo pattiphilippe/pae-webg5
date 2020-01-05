@@ -4,10 +4,10 @@
     <meta charset="utf-8">
 </head>
 <body>
-    <header th:replace="main :: header(titre='Accueil')"></header>
+    <header th:replace="main :: header(title=#{home})"></header>
     <section>
         <div>Bienvenue sur le site de gestion du programme annuel des étudiants</div>
-        <span th:text="|Bonjour ${username}!|">Inconnu</span>
+        <span th:text="|#{greetings} ${username}|">
     </section>
     <footer th:replace="main :: footer"></footer>
 </body>
