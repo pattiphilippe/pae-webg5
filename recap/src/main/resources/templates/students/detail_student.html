@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+</head>
+<body>
+    <header th:replace="main :: header(title=#{student} + ' - ' + ${student.name})"></header>
+    
+    <section id="detail_student">
+        <h2 th:text="${student.name}"></h2>
+        <ul>
+            <li th:text="|#{name} : ${student.name}|"></li>
+            <li th:text="|#{number} : ${student.number}|"></li>
+            <li th:text="|#{section} : ${student.section}|"></li>
+            <li th:text="|#{bloc} : ${student.bloc}|"></li>
+        </ul>
+        <br>
+        <table th:unless="${#lists.isEmpty(registrations)}" class="table table-bordered table-striped mb-0">
+            <thead class="text-center">
+                <tr>
+                    <th colspan="5" th:text="|Annual Program|"></th>
+                </tr>
+                <tr>
+                    <th th:text="ID"></th>
+                    <th th:text="Title"></th>
+                    <th th:text="ECTS"></th>
+                    <th th:text="Semester"></th>
+                    <th th:text="Mandatory"></th>
+                </tr>
+            </thead>
+            <tr th:each="registration : ${registrations}">
+                <td th:text="${registration.unit_id.id}"></td>
+                <td th:text="${registration.unit_id.title}"></td>
+                <td th:text="${registration.unit_id.ects}"></td>
+                <td th:text="${registration.unit_id.semester}"></td>
+                <td></td>
+            </tr>
+        </table>
+        <div th:if="${#lists.isEmpty(registrations)}" th:text="|Not registered to any unit.|"></div>
+    </section>
+    <div th:replace="main :: footer_margin"></div>
+    <footer th:replace="main :: footer"></footer>
+</body>
+</html>

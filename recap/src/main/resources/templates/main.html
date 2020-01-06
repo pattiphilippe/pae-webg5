@@ -3,22 +3,13 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" th:href="@{/recap/css/theme.css}">
 
-    <title th:text="|${title} - #{pae}|"></title>
+    <title th:text="|${title} - #{annual_program}|"></title>
     <img th:src="@{/recap/images/esi-logo.png}" alt="Logo esi" th:id="logo_esi">
-    <h1 th:text="#{pae}"></h1>
+    <h1 th:text="#{annual_program}"></h1>
     <h2 class="title" th:text="${title}"></h2>
     <nav class="nav justify-content-center">
         <a class="nav-link active" th:href="@{/}" th:text="#{home}"></a>
-        <a class="nav-link active" th:href="@{/courses}" th:text="#{courses}"></a>
         <a class="nav-link active" th:href="@{/students}" th:text="#{students}"></a>
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-toggle="dropdown" th:href="@{/}" role="button" aria-haspopup="true"
-                aria-expanded="false">Api</a>
-            <div class="dropdown-menu">
-                <a class="dropdown-item" th:href="@{/api/getCourses}" th:text="#{courses}"></a>
-                <a class="dropdown-item" th:href="@{/api/getEtudiants}" th:text="#{students}"></a>
-            </div>
-        </li>
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" th:href="@{/}" role="button" aria-haspopup="true"
                 aria-expanded="false" >

@@ -7,36 +7,36 @@
     <header th:replace="main :: header(title=#{students})"></header>
     <section><h2>Students List</h2>
         <form th:action="@{/students}" th:object="${filter}" method="post">
-            <label for="student_name" th:text="Name"></label>
-            <input type="text" name="student_name" th:field="*{name}" placeholder="Name"/>
+            <label for="student_name" th:text="#{name}"></label>
+            <input type="text" name="student_name" th:field="*{name}" th:placeholder="#{name}"/>
 
-            <label for="student_name_partial" th:text="|Partial name|"></label>
-            <input type="text" name="student_name_partial" th:field="*{partialName}" placeholder="Partial name"/>
+            <label for="student_name_partial" th:text="#{partial_name}"></label>
+            <input type="text" name="student_name_partial" th:field="*{partialName}" th:placeholder="#{partial_name}"/>
 
-            <label for="student_section" th:text="Section"></label>
+            <label for="student_section" th:text="#{section}"></label>
             <select name="student_section"  th:field="*{section}">
                 <option th:value="null"></option>
                 <option th:each="section : ${sections}" th:value="${section.name()}" th:text="${section.name()}"></option>
             </select>
 
-            <label for="student_bloc" th:text="Bloc"></label>
+            <label for="student_bloc" th:text="#{bloc}"></label>
             <select name="student_bloc"  th:field="*{bloc}">
                 <option th:value="null"></option>
                 <option th:each="bloc : ${blocs}" th:value="${bloc}" th:text="${bloc}"></option>
             </select><br>
 
-            <button class="btn btn-success" type="submit" th:text="Filter"></button>
+            <button class="btn btn-success" type="submit" th:text="#{filter}"></button>
         </form>
         <br>
         <table th:unless="${#lists.isEmpty(students)}" class="table table-bordered table-striped mb-0">
             <tr>
-                <th>Number</th>
-                <th>Name</th>
-                <th>Section</th>
-                <th>Bloc</th>
+                <th th:text="#{number}"></th>
+                <th th:text="#{name}"></th>
+                <th th:text="#{section}"></th>
+                <th th:text="#{bloc}"></th>
             </thead>
             <tr th:each="student : ${students}">
-                <td th:text="${student.number}"></td>
+                <td><a th:href="@{students/{number}(number = ${student.number})}" th:text="${student.number}"></a></td>
                 <td th:text="${student.name}"></td>
                 <td th:text="${student.section}"></td>
                 <td th:text="${student.bloc}"></td>

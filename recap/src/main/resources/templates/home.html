@@ -6,8 +6,7 @@
 <body>
     <header th:replace="main :: header(title=#{home})"></header>
     <section>
-        <div>Bienvenue sur le site de gestion du programme annuel des étudiants</div>
-        <div th:text="|Bonjour ${username}!|"></div>
+        <div th:text="|#{greetings} ${username}!|"></div>
     </section>
     <footer th:replace="main :: footer"></footer>
 </body>
