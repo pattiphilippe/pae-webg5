@@ -1,0 +1,1 @@
+INSERT INTO Student (number, name, bloc) VALUES (1, 'Philippe', 1);
