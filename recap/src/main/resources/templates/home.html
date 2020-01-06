@@ -6,7 +6,14 @@
 <body>
     <header th:replace="main :: header(title=#{home})"></header>
     <section>
-        <div th:text="|#{greetings} ${username}!|"></div>
+        <div>
+            <span th:text="#{greetings} "></span>
+            <span sec:authentication="name"></span>
+            <br>
+            <security:authorize acces="hasRole('STUDENT')">
+                <a th:text="|My profile|" th:href="@{/students/{number}(number=${username})}"></a>
+            </security:authorize>
+        </div>
     </section>
     <footer th:replace="main :: footer"></footer>
 </body>
