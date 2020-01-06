@@ -13,4 +13,5 @@ public class PaeApplicationTests {
 	public void contextLoads() {
 	}
 
+	//#spring.datasource.initialization-mode=never
 }

@@ -6,7 +6,7 @@
 <body>
     <header th:replace="main :: header(title=#{students})"></header>
     <section><h2>Students List</h2>
-        <form th:action="@{/students/filter}" th:object="${filter}" method="post">
+        <form th:action="@{/students}" th:object="${filter}" method="post">
             <label for="student_name" th:text="Name"></label>
             <input type="text" name="student_name" th:field="*{name}" placeholder="Name"/>
 

@@ -1,14 +1,21 @@
 package com.example.demo.rest;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.web.context.WebApplicationContext;
 
+import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -22,15 +29,30 @@ import com.example.demo.service.CourseService;
 import static com.example.demo.model.CourseTest.*;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(CourseRest.class)
+//@WebMvcTest(CourseRest.class)
+@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 public class CourseRestTest {
 
+
+    //TODO bonne piste pour test avec sécurité
+    //https://www.baeldung.com/spring-security-integration-tests
     @Autowired
+    private WebApplicationContext context;
+
     private MockMvc mvc;
+
+    @Before
+    public void setup() {
+        mvc = MockMvcBuilders
+            .webAppContextSetup(context)
+            .apply(springSecurity())
+            .build();
+    }
 
     @MockBean
     private CourseService courseService;
 
+    @WithMockUser(username = "user", password = "user", roles = "STUDENT")
     @Test
     public void getCourses() throws Exception {
         Course course1 = new Course(DFT_ID, DFT_LIBELLE, DFT_ECTS, DFT_ETUDIANTS);

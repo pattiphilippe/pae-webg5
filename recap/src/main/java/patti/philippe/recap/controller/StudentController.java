@@ -19,6 +19,7 @@ public class StudentController{
     @Autowired
     private StudentRepository studentRepository;
 
+
     @GetMapping("/students")
     public String etudiants(Model model) {
         model.addAttribute("students", studentRepository.findAll());
@@ -30,9 +31,12 @@ public class StudentController{
     }
 
 
-    @PostMapping("/students/filter")
+    @PostMapping("/students")
     public String filter(@ModelAttribute("filter") StudentFilter filter, Model model){
         model.addAttribute("students", studentRepository.filter(filter));
+        model.addAttribute("sections", Section.values());
+        int[] blocs = {1,2,3,4,5,6};
+        model.addAttribute("blocs", blocs);
         return "students/students";
     }
     
