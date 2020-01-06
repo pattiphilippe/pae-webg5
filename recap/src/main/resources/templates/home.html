@@ -10,9 +10,9 @@
             <span th:text="#{greetings} "></span>
             <span sec:authentication="name"></span>
             <br>
-            <security:authorize acces="hasRole('STUDENT')">
+            <span sec:authorize="hasRole('STUDENT')">
                 <a th:text="|My profile|" th:href="@{/students/{number}(number=${username})}"></a>
-            </security:authorize>
+            </span>
         </div>
     </section>
     <footer th:replace="main :: footer"></footer>
