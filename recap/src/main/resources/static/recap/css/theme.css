@@ -1,0 +1,98 @@
+/* Strongly based on the word of Foud Hind 42835. We've worked together and I took her theme.css
+ * But she told me per message that it was ok if praised her for it in my work.
+ * Soooo, "Thanks a lot, you're great in css"
+ * I'm not so sure I agree with that. Potentially, there's a tutorial out there that she followed.
+ * But at least, I can use her work without anyone trying to say I cheated.
+ * I cheated, but I told you (the reader). So I don't care anymore.
+ * Yup, it's nearly 1 am...
+*/
+
+html {
+    text-align: center;
+}
+
+header {
+    background-color: #236ab9;
+    padding: 0%;
+    padding-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+#logo_esi {
+    float: left;
+    margin: 0px 20px;
+    height: 80px;
+}
+
+header h1, header h2 {
+    color: white;
+    font-family: sans-serif;
+}
+
+header nav {
+    background-color: white;
+}
+
+nav img{
+    width: 20px;
+    height: 20px;
+}
+
+ul li a {
+    display: block;
+}
+
+
+table tr:nth-child(even) {
+    background-color: #eaf2fb;
+}
+
+table th {
+    background-color: #236ab9;
+    color: white;
+}
+
+body>footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #eaf2fb;
+    text-align: center;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    margin-bottom: 0px;
+    /*
+    position: fixed;
+    left: 0;
+    */
+}
+
+#footer_margin{
+    margin-bottom: 60px;
+}
+
+section {
+    padding: 2%;
+    margin-bottom: 15px;
+}
+
+input[type=text] {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+section form {
+    width: 35%;
+    height: 35%;
+}
+
+.help-block {
+    color: red;
+}
+
+.feedback {
+    background-color: skyblue;
+    color: royalblue;
+    align-content: center;
+    text-align: center
+}

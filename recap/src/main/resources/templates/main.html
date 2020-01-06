@@ -1,0 +1,62 @@
+<header th:fragment="header">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" th:href="@{/recap/css/theme.css}">
+
+    <title th:text="|${title} - #{pae}|"></title>
+    <img th:src="@{/recap/images/esi-logo.png}" alt="Logo esi" th:id="logo_esi">
+    <h1 th:text="#{pae}"></h1>
+    <h2 class="title" th:text="${title}"></h2>
+    <nav class="nav justify-content-center">
+        <a class="nav-link active" th:href="@{/}" th:text="#{home}"></a>
+        <a class="nav-link active" th:href="@{/courses}" th:text="#{courses}"></a>
+        <a class="nav-link active" th:href="@{/students}" th:text="#{students}"></a>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" th:href="@{/}" role="button" aria-haspopup="true"
+                aria-expanded="false">Api</a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" th:href="@{/api/getCourses}" th:text="#{courses}"></a>
+                <a class="dropdown-item" th:href="@{/api/getEtudiants}" th:text="#{students}"></a>
+            </div>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" th:href="@{/}" role="button" aria-haspopup="true"
+                aria-expanded="false" >
+                <img th:src="@{/recap/images/icons8-language-50.png}" alt="#{language}">
+            </a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" th:href="@{__${#httpServletRequest.requestURI}__(lang=en)}" th:text="#{english}"></a>
+                <a class="dropdown-item" th:href="@{__${#httpServletRequest.requestURI}__(lang=fr)}" th:text="#{french}"></a>
+            </div>
+        </li>
+        <form class="form-inline" method="GET" th:action="@{/login}" sec:authorize="isAnonymous()">
+            <button class="btn btn-success" type="submit">Log In</button>
+        </form>
+        <form class="form-inline" method="POST" th:action="@{/logout}" sec:authorize="isAuthenticated()">
+            <button class="btn btn-danger" type="submit">Log Out</button>
+        </form>
+    </nav>
+</header>
+
+<div id="footer_margin" th:fragment="footer_margin"></div>
+
+<footer th:fragment="footer">
+    <div>
+        Philippe Patti 43197 --
+        <a href="mailto:43197@etu.he2b.be?subject=WAAAAAW, Incroyable&body=Non, je rigole">
+            43197@etu.he2b.be
+        </a>
+    </div>
+    <div>
+        Icons by Icons8
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</footer>
