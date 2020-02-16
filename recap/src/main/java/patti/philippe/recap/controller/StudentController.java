@@ -27,23 +27,25 @@ public class StudentController{
     private RegistrationRepository registrationRepository;
 
 
-    @GetMapping("/students")
-    public String etudiants(Model model, Principal principal) {
+    private void initStudentsModelParams(Model model, Principal principal){
         model.addAttribute("students", studentRepository.findAll());
         model.addAttribute("sections", Section.values());
         int[] blocs = {1,2,3,4,5,6};
         model.addAttribute("blocs", blocs);
+        model.addAttribute("username", principal.getName());
+    }
+
+    @GetMapping("/students")
+    public String students(Model model, Principal principal) {
+        initStudentsModelParams(model, principal);
         model.addAttribute("filter", new StudentFilter());
         return "students/students";
     }
 
 
     @PostMapping("/students")
-    public String filter(@ModelAttribute("filter") StudentFilter filter, Model model){
-        model.addAttribute("students", studentRepository.filter(filter));
-        model.addAttribute("sections", Section.values());
-        int[] blocs = {1,2,3,4,5,6};
-        model.addAttribute("blocs", blocs);
+    public String filter(@ModelAttribute("filter") StudentFilter filter, Model model, Principal principal){
+        initStudentsModelParams(model, principal);
         return "students/students";
     }
 
@@ -56,6 +58,7 @@ public class StudentController{
             throw new IllegalArgumentException("No student with this number!");
         }
 
+        model.addAttribute("username", principal.getName());
         model.addAttribute("student", student.get());
         model.addAttribute("registrations", registrationRepository.findByAnnualProgram(number));
         return "students/detail_student";

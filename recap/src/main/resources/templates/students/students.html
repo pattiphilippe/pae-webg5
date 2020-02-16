@@ -44,6 +44,7 @@
         </table>
         <div th:if="${#lists.isEmpty(students)}" th:text="|No students|"></div>
     </section>
+    <footer th:replace="main :: footer_margin"></footer>
     <footer th:replace="main :: footer"></footer>
 </body>
 </html>

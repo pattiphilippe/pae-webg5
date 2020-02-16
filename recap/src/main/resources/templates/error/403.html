@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" >
-    <header th:replace="main :: header(title=error_403)"></header>
-    <section th:replace="error :: content">
-        Content of error 403, You don't have access to this page.
-        Go back to where you belong, you little bast*rd.
-    </section>
+    <header th:replace="main :: header(title=#{error_403_title})"></header>
+    <section th:replace="error :: content(title=#{error_403_title},message=#{error_403_message})"></section>
+    <footer th:replace="main :: footer"></footer>
 </html>

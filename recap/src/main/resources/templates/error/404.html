@@ -1,0 +1,6 @@
+<!DOCTYPE html>
+<html lang="en" >
+    <header th:replace="main :: header(title=#{error_404_title})"></header>
+    <section th:replace="error :: content(title=#{error_404_title},message=#{error_404_message})"></section>
+    <footer th:replace="main :: footer"></footer>
+</html>

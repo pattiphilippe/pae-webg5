@@ -6,7 +6,15 @@
 <body>
     <header th:replace="main :: header(title=Error)"></header>
     <section th:fragment="content">
-        Error
+        <h1 th:text="${title}"></h1>
+        <div>
+            <span th:text="${message}"></span>
+            <br/>
+            <br/>
+        </div>
+        <div>
+            <a class="btn btn-success block" th:href="@{/}" th:text="#{safety}"></a> 
+        </div>
     </section>
     <footer th:replace="main :: footer"></footer>
 </body>
