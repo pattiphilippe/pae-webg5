@@ -26,11 +26,11 @@ public class StudentController{
     @Autowired
     private RegistrationRepository registrationRepository;
 
+    private final int [] blocs = {1,2,3};
+
 
     private void initStudentsModelParams(Model model, Principal principal){
-        model.addAttribute("students", studentRepository.findAll());
         model.addAttribute("sections", Section.values());
-        int[] blocs = {1,2,3,4,5,6};
         model.addAttribute("blocs", blocs);
         model.addAttribute("username", principal.getName());
     }
@@ -38,6 +38,7 @@ public class StudentController{
     @GetMapping("/students")
     public String students(Model model, Principal principal) {
         initStudentsModelParams(model, principal);
+        model.addAttribute("students", studentRepository.findAll());
         model.addAttribute("filter", new StudentFilter());
         return "students/students";
     }
@@ -46,6 +47,7 @@ public class StudentController{
     @PostMapping("/students")
     public String filter(@ModelAttribute("filter") StudentFilter filter, Model model, Principal principal){
         initStudentsModelParams(model, principal);
+        model.addAttribute("students", studentRepository.filter(filter));
         return "students/students";
     }
 

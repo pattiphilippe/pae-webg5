@@ -4,6 +4,8 @@ import java.util.Collection;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
+import javax.validation.constraints.NotNull;
+
 import org.springframework.data.repository.CrudRepository;
 
 import patti.philippe.recap.model.Section;
@@ -12,31 +14,16 @@ import patti.philippe.recap.model.StudentFilter;
 
 public interface StudentRepository extends CrudRepository<Student, Integer> {
 
-    default Collection<Student> filter(StudentFilter filter) {
+    default Collection<Student> filter(@NotNull StudentFilter filter) {
+
+        Section filterSection = filter.getSection() == null || filter.getSection().isEmpty() ?
+            null : Section.valueOf(filter.getSection());
         return StreamSupport.stream(findAll().spliterator(), false)
-            .filter(student -> {
-                if(filter.getName() != null){
-                    if(!student.getName().contains(filter.getName())){
-                        return false;
-                    }
-                }
-                if(filter.getPartialName() != null){
-                    if(!student.getName().contains(filter.getPartialName())){
-                        return false;
-                    }
-                }
-                if(filter.getSection() != null && !filter.getSection().isEmpty()){
-                    if(!student.getSection().equals(Section.valueOf(filter.getSection()))){
-                        return false;
-                    }
-                }
-                if(filter.getBloc() != null){
-                    if(student.getBloc() != filter.getBloc()){
-                        return false;
-                    }
-                }
-                return true;
-            }).collect(Collectors.toList());
-    }
+            .filter(filter.getName() == null ? s -> true : s -> s.getName().contains(filter.getName()))
+            .filter(filter.getPartialName() == null ? s -> true : s -> s.getName().contains(filter.getPartialName()))
+            .filter(filterSection == null ? s -> true : s -> s.getSection().equals(filterSection))
+            .filter(filter.getBloc() == null ? s -> true : s -> s.getBloc() == filter.getBloc())
+            .collect(Collectors.toList());
+    } 
     
 }

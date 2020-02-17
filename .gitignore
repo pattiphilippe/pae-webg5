@@ -31,5 +31,5 @@ build/
 .vscode/
 
 ### WEBG5 ###
-db.mv.db
-db.trace.db
+*.db
+/bin/
