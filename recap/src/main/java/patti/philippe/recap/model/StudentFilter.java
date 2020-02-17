@@ -8,8 +8,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class StudentFilter{
+    private String number;
     private String name;
-    private String partialName;
     private String section;
     private Integer bloc;
 }

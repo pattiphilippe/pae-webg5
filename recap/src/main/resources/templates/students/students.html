@@ -7,17 +7,17 @@
     <header th:replace="main :: header(title=#{students})"></header>
     <section><h2>Students List</h2>
         <form th:action="@{/students}" th:object="${filter}" method="post">
-            <label for="student_name" th:text="#{name}"></label>
-            <input type="text" name="student_name" th:field="*{name}" th:placeholder="#{name}"/>
+            <label for="student_number" th:text="#{number}"></label>
+            <input type="text" name="student_number" th:field="*{number}" th:placeholder="#{number}"/><br>
 
-            <label for="student_name_partial" th:text="#{partial_name}"></label>
-            <input type="text" name="student_name_partial" th:field="*{partialName}" th:placeholder="#{partial_name}"/>
+            <label for="student_name" th:text="#{name}"></label>
+            <input type="text" name="student_name" th:field="*{name}" th:placeholder="#{name}"/><br>
 
             <label for="student_section" th:text="#{section}"></label>
             <select name="student_section"  th:field="*{section}">
                 <option th:value="null"></option>
                 <option th:each="section : ${sections}" th:value="${section.name()}" th:text="${section.name()}"></option>
-            </select>
+            </select><br>
 
             <label for="student_bloc" th:text="#{bloc}"></label>
             <select name="student_bloc"  th:field="*{bloc}">

@@ -19,8 +19,8 @@ public interface StudentRepository extends CrudRepository<Student, Integer> {
         Section filterSection = filter.getSection() == null || filter.getSection().isEmpty() ?
             null : Section.valueOf(filter.getSection());
         return StreamSupport.stream(findAll().spliterator(), false)
+            .filter(filter.getNumber() == null ? s -> true : s -> String.valueOf(s.getNumber()).contains(filter.getNumber()))
             .filter(filter.getName() == null ? s -> true : s -> s.getName().contains(filter.getName()))
-            .filter(filter.getPartialName() == null ? s -> true : s -> s.getName().contains(filter.getPartialName()))
             .filter(filterSection == null ? s -> true : s -> s.getSection().equals(filterSection))
             .filter(filter.getBloc() == null ? s -> true : s -> s.getBloc() == filter.getBloc())
             .collect(Collectors.toList());
