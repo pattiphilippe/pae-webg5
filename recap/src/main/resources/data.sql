@@ -6,7 +6,10 @@ DELETE FROM Registration;
 DELETE FROM User;
 DELETE FROM Authority;
 
-INSERT INTO User (username, password, enabled) values ('40001','{bcrypt}$2a$10$LSDtj6X7InrX4YjJ//ChluKU.yqCRNCplBTrQaBWmILWBarQYdhWG', true);
+
+-- INSERT INTO User (username, password, enabled) values ('40001','{bcrypt}$2a$10$LSDtj6X7InrX4YjJ//ChluKU.yqCRNCplBTrQaBWmILWBarQYdhWG', true);
+INSERT INTO User (username, password, enabled) values ('40001','{bcrypt}$2y$12$99l4/LWREjN2oy.kiMct9OGbWZh6A1i.6.PPAq4539zuZmiyfdfIe', true);
+-- INSERT INTO User (username, password, enabled) values ('40001','40001test', true);
 INSERT INTO User (username, password, enabled) values ('prof','{bcrypt}$2a$10$Q0f1uQTxucy40MJ4sNBw2OOjC.j7TtEK.AV8F6ElSNLEm/H7QWgBa', true);
 INSERT INTO Authority (id, username, authority) values (1, '40001', 'ROLE_STUDENT');
 INSERT INTO Authority (id, username, authority) values (2, 'prof', 'ROLE_TEACHER');
